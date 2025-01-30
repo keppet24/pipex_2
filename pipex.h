@@ -6,7 +6,7 @@
 /*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:55:44 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/01/30 18:10:12 by taqi             ###   ########.fr       */
+/*   Updated: 2025/01/30 18:45:05 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	free_all(char **tab);
 char	*ft_strjoin(char  *s1, char  *s2);
 int		ft_strlen(char *s);
 int		ft_strncmp(char *s1, char *s2, size_t n);
+int		ft_strlen(char *s);
 
 
 #endif

@@ -6,21 +6,11 @@
 /*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:55:56 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/01/30 18:10:53 by taqi             ###   ########.fr       */
+/*   Updated: 2025/01/30 18:45:23 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-int	ft_strlen(char *s)
-{
-	int i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strjoin(char  *s1, char  *s2)
 {
@@ -123,7 +113,6 @@ void	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
 	int i;
 	int size;
 	char *command;
-	//char *path;
 
 	i = 0;
 	if (tab_of_arg[0][0] == '/')
@@ -143,14 +132,3 @@ void	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
 	//(*doc).path_for_excve = ft_strjoin( "/usr/bin/", command);
 	(*doc).path_for_excve = ft_strjoin( (*doc).env, command);
 }
-
-// int main()
-// {
-// 	pipex doc;
-// 	//int i = 0;
-	
-// 	char *tab[] = {"tr", "'[:lower:]'", "'[:upper:]'", NULL};
-// 	path_for_excve(tab, &doc);
-// 	printf("%s", doc.path_for_excve);
-// 	return (0);
-// }

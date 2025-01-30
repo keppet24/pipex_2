@@ -6,7 +6,7 @@
 #    By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 12:24:21 by othmaneetta       #+#    #+#              #
-#    Updated: 2025/01/30 18:10:20 by taqi             ###   ########.fr        #
+#    Updated: 2025/01/30 18:47:13 by taqi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = pipex
 
 LIB = libftpipex.a
 
-SRCS = main.c execute.c execve_arg.c execve_path.c utils.c
+SRCS = main.c execute.c execve_arg.c execve_path.c utils.c ft_split.c
 
 CFLAGS = -Wall -Wextra -Werror
 
