@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 12:17:05 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/01/29 16:29:56 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/01/30 17:51:24 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	execute_program_1(int ac, char **av, pipex *doc, char **env)
 
 	tab = ft_split(av[2],' ');
 	tab_of_arg(tab, doc);
-	path_for_excve(tab , doc);
-	char *env[] = {NULL};
-	if  (execve((*doc).path_for_excve, (*doc).arg_for_excve, env) == -1)
+	path_for_excve(tab , doc, env);
+	char *envi[] = {NULL};
+	if  (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
 		perror("lol");
 }
 
@@ -49,8 +49,8 @@ void	execute_program_2(int ac, char **av, pipex *doc, char **env)
 	//char *arg[] = {"cut", "-d", " ", "-f1",NULL};
 	tab = ft_split(av[3],' ');
 	tab_of_arg(tab, doc);
-	path_for_excve(tab , doc);
-	char *env[] = {NULL};
-	if  (execve((*doc).path_for_excve, (*doc).arg_for_excve, env) == -1)
+	path_for_excve(tab , doc, env);
+	char *envi[] = {NULL};
+	if  (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
 		perror("lol");
 }

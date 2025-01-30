@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:55:56 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/01/29 18:17:12 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:10:53 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,80 @@ char	*ft_strjoin(char  *s1, char  *s2)
 	return (resu);
 }
 
-// void	check_command_in_path(char *command, pipex *doc, char *path, char **tab)
-// {
-// 	int i;
+char	*line_of_path(char *str)
+{
+	char	*resu;
+	int		l;
+	int		path_len;
+	int		m;
 
-// 	i = 0;
-// 	while (tab[i])
-// 	{
-// 		if (access(ft_strjoin(tab[i], "/ls"), F_OK) == 0)
-//         	printf("la commande ls est dans %s\n", tab[i]);
-//     	else
-//         	printf("la commande ls n est pas dans %s\n", tab[i]);
-//         i++;
-// 	}
-// }
+	l = 5;
+	m = 0;
+	path_len = ft_strlen(str) - 5; 
+	resu = malloc(sizeof(char) * (path_len + 1)); 
+	while (str[l])
+	{
+		resu[m] = str[l];
+		l++;
+		m++;
+	}
+	resu[m] = '\0';
+	return (resu);
+}
+
+char	**split_path_env(char **env)
+{
+	int		i;
+	int		j;
+	char	*path;
+	char	**resu;
+
+	i = 0;
+	j = 0;	
+	while (env[i])
+	{
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+		{
+			j = i;
+			break;
+		}
+		i++;
+	}
+	path = line_of_path(env[j]);
+	resu = ft_split(path, ':');
+	return (resu);
+}
+
+void	set_path(pipex *doc, char **env, char *command)
+{
+	char 	**repo_of_env;
+	char	*dir;
+	char	*slash;
+	char	*full_path;
+	int	i;
+
+	i = 0;
+	repo_of_env = split_path_env(env);
+	while (repo_of_env[i])
+	{
+		dir = repo_of_env[i];
+    	slash = ft_strjoin(dir, "/");
+    	full_path = ft_strjoin(slash, command);
+    	if (access(full_path, F_OK) == 0)
+		{
+			(*doc).env = slash;
+			return;
+		}
+		i++;
+	}
+}
 
 void	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
 {
 	int i;
 	int size;
 	char *command;
-	char *path;
+	//char *path;
 
 	i = 0;
 	if (tab_of_arg[0][0] == '/')
@@ -86,8 +139,9 @@ void	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
 		i++;
 	}
 	command[i] = 0;
-	//path = extract_path(env);
-	(*doc).path_for_excve = ft_strjoin( "/usr/bin/", command);
+	set_path(doc ,env, command);
+	//(*doc).path_for_excve = ft_strjoin( "/usr/bin/", command);
+	(*doc).path_for_excve = ft_strjoin( (*doc).env, command);
 }
 
 // int main()

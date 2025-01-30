@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:36:54 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/01/29 16:17:12 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/01/30 17:50:48 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	direction_1(int *fd, pipex *doc, char **av)
 		//close(fd[0]);
 		if ((access(av[1], R_OK) == -1) || (access(av[1], F_OK) == -1))
 		{
-			write(2, "Infile cannot be found\n", 25);
+			write(2, "Infile cannot be found\n", 24);
 			dup2(fd[0], STDIN_FILENO);
 			close(fd[0]);
 		}
@@ -63,7 +63,7 @@ int main(int ac, char **av, char **env)
 	if (id2 == 0)
 	{
 		direction_2(fd, &doc, ac, av); 
-		execute_program_2(ac, av, &doc);
+		execute_program_2(ac, av, &doc, env);
 	}
 	close(fd[0]);
 	close(fd[1]);

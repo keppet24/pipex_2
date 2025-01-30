@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+         #
+#    By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 12:24:21 by othmaneetta       #+#    #+#              #
-#    Updated: 2025/01/23 16:41:22 by oettaqi          ###   ########.fr        #
+#    Updated: 2025/01/30 18:10:20 by taqi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = pipex
 
 LIB = libftpipex.a
 
-SRCS = main.c execute.c execve_arg.c execve_path.c 
+SRCS = main.c execute.c execve_arg.c execve_path.c utils.c
 
 CFLAGS = -Wall -Wextra -Werror
 
