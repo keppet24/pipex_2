@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:55:56 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/01/30 18:45:23 by taqi             ###   ########.fr       */
+/*   Updated: 2025/02/03 17:06:03 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,11 @@ char	**split_path_env(char **env)
 	}
 	path = line_of_path(env[j]);
 	resu = ft_split(path, ':');
+	free(path);
 	return (resu);
 }
 
-void	set_path(pipex *doc, char **env, char *command)
+int	set_path(pipex *doc, char **env, char *command)
 {
 	char 	**repo_of_env;
 	char	*dir;
@@ -102,13 +103,23 @@ void	set_path(pipex *doc, char **env, char *command)
     	if (access(full_path, F_OK) == 0)
 		{
 			(*doc).env = slash;
-			return;
+			//free(slash);
+			free(full_path);
+			free_all(repo_of_env);
+			return 1;
 		}
+		free(slash);
+		free(full_path);
 		i++;
 	}
+	//free(dir);
+	// free(slash);
+	// free(full_path);
+	free_all(repo_of_env);
+	return (0);
 }
 
-void	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
+int	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
 {
 	int i;
 	int size;
@@ -118,7 +129,7 @@ void	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
 	if (tab_of_arg[0][0] == '/')
 	{
 		(*doc).path_for_excve = tab_of_arg[0];
-		return ;
+		return 0;
 	}
 	size = ft_strlen(tab_of_arg[0]);
 	command = malloc(sizeof(char) * (size + 1));
@@ -128,7 +139,12 @@ void	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
 		i++;
 	}
 	command[i] = 0;
-	set_path(doc ,env, command);
+	if (set_path(doc ,env, command) == 0)
+	{
+		free(command);
+		return (0);
+	}
 	//(*doc).path_for_excve = ft_strjoin( "/usr/bin/", command);
 	(*doc).path_for_excve = ft_strjoin( (*doc).env, command);
+	return (1);
 }
