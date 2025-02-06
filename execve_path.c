@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   execve_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:55:56 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/03 17:06:03 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/06 01:23:37 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_strjoin(char  *s1, char  *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		size2;
 	int		i;
@@ -49,8 +49,8 @@ char	*line_of_path(char *str)
 
 	l = 5;
 	m = 0;
-	path_len = ft_strlen(str) - 5; 
-	resu = malloc(sizeof(char) * (path_len + 1)); 
+	path_len = ft_strlen(str) - 5;
+	resu = malloc(sizeof(char) * (path_len + 1));
 	while (str[l])
 	{
 		resu[m] = str[l];
@@ -69,13 +69,13 @@ char	**split_path_env(char **env)
 	char	**resu;
 
 	i = 0;
-	j = 0;	
+	j = 0;
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
 		{
 			j = i;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -85,66 +85,60 @@ char	**split_path_env(char **env)
 	return (resu);
 }
 
-int	set_path(pipex *doc, char **env, char *command)
+int	set_path(t_pipex *doc, char **env, char *command)
 {
-	char 	**repo_of_env;
+	char	**repo_of_env;
 	char	*dir;
 	char	*slash;
 	char	*full_path;
-	int	i;
+	int		i;
 
-	i = 0;
+	i = -1;
 	repo_of_env = split_path_env(env);
-	while (repo_of_env[i])
+	while (repo_of_env[++i])
 	{
 		dir = repo_of_env[i];
-    	slash = ft_strjoin(dir, "/");
-    	full_path = ft_strjoin(slash, command);
-    	if (access(full_path, F_OK) == 0)
+		slash = ft_strjoin(dir, "/");
+		full_path = ft_strjoin(slash, command);
+		if (access(full_path, F_OK) == 0)
 		{
 			(*doc).env = slash;
-			//free(slash);
 			free(full_path);
 			free_all(repo_of_env);
-			return 1;
+			return (1);
 		}
 		free(slash);
 		free(full_path);
-		i++;
 	}
-	//free(dir);
-	// free(slash);
-	// free(full_path);
 	free_all(repo_of_env);
 	return (0);
 }
 
-int	path_for_excve(char **tab_of_arg, pipex *doc, char **env)
+int	path_for_excve(char **tab_of_arg, t_pipex *doc, char **env)
 {
-	int i;
-	int size;
-	char *command;
+	int		i;
+	int		size;
+	char	*command;
 
 	i = 0;
 	if (tab_of_arg[0][0] == '/')
 	{
 		(*doc).path_for_excve = tab_of_arg[0];
-		return 0;
+		return (0);
 	}
 	size = ft_strlen(tab_of_arg[0]);
 	command = malloc(sizeof(char) * (size + 1));
-	while(i < size)
+	while (i < size)
 	{
 		command[i] = tab_of_arg[0][i];
 		i++;
 	}
 	command[i] = 0;
-	if (set_path(doc ,env, command) == 0)
+	if (set_path(doc, env, command) == 0)
 	{
 		free(command);
 		return (0);
 	}
-	//(*doc).path_for_excve = ft_strjoin( "/usr/bin/", command);
-	(*doc).path_for_excve = ft_strjoin( (*doc).env, command);
+	(*doc).path_for_excve = ft_strjoin((*doc).env, command);
 	return (1);
 }

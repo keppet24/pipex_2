@@ -3,41 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:55:44 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/03 15:36:38 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/06 01:00:09 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
-#define PIPEX_H
+# define PIPEX_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/wait.h>
+# include <unistd.h>
+# include <fcntl.h>
 
-typedef struct pipex
+typedef struct s_pipex
 {
-	int infile_fd;
-	int	outfile_fd;
-	char *path_for_excve;
-	char **arg_for_excve;
-	char *env;
-}				pipex;
+	int		infile_fd;
+	int		outfile_fd;
+	char	*path_for_excve;
+	char	**arg_for_excve;
+	char	*env;
+}	t_pipex;
 
-void	execute_program_1(int ac, char **av, pipex *doc, char **env);
-void	execute_program_2(int ac, char **av,  pipex *doc, char **env);
-void	tab_of_arg(char **tab, pipex *doc);
+void	execute_program_1(int ac, char **av, t_pipex *doc, char **env);
+void	execute_program_2(int ac, char **av, t_pipex *doc, char **env);
+void	tab_of_arg(char **tab, t_pipex *doc);
 char	**ft_split(char const *s, char c);
-int		path_for_excve(char **tab_of_arg, pipex *doc, char **env);
+int		path_for_excve(char **tab_of_arg, t_pipex *doc, char **env);
 void	free_all(char **tab);
-char	*ft_strjoin(char  *s1, char  *s2);
+char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *s);
 int		ft_strncmp(char *s1, char *s2, size_t n);
 int		ft_strlen(char *s);
-
 
 #endif

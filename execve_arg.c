@@ -6,7 +6,7 @@
 /*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:01:57 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/01/30 18:47:48 by taqi             ###   ########.fr       */
+/*   Updated: 2025/02/06 01:05:16 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	size_of_new_tab(char **tab)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	j = 0;
 	while (tab[i] != NULL)
@@ -38,11 +38,11 @@ int	size_of_new_tab(char **tab)
 	return (i - j);
 }
 
-void	tab_of_arg(char **tab, pipex *doc)
+void	tab_of_arg(char **tab, t_pipex *doc)
 {
-	int i;
-	int j;
-	int size_of_arg;
+	int	i;
+	int	j;
+	int	size_of_arg;
 
 	i = 0;
 	j = 0;
@@ -60,11 +60,8 @@ void	tab_of_arg(char **tab, pipex *doc)
 		i++;
 		j++;
 	}
-	//free_all(tab);
 	(*doc).arg_for_excve[i] = NULL;
-	//return ((*doc).arg_for_excve);
 }
-
 // int main()
 // {
 // 	char **tab;
@@ -72,7 +69,6 @@ void	tab_of_arg(char **tab, pipex *doc)
 // 	//char **new_tab;
 // 	int i = 0;
 // 	int j = 0;
-	
 // 	char *s = "cut -d ' ' -f1";
 // 	//char *s1 = "cut -d grep -f1";
 // 	char sep = ' ';
