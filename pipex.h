@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:55:44 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/06 01:00:09 by taqi             ###   ########.fr       */
+/*   Updated: 2025/02/08 12:10:20 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *s);
 int		ft_strncmp(char *s1, char *s2, size_t n);
 int		ft_strlen(char *s);
+char	*ft_strchr(char *s, int c);
+
 
 #endif

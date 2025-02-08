@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:55:56 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/06 01:23:37 by taqi             ###   ########.fr       */
+/*   Updated: 2025/02/08 15:31:27 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char	*line_of_path(char *str)
 	m = 0;
 	path_len = ft_strlen(str) - 5;
 	resu = malloc(sizeof(char) * (path_len + 1));
+	if (!resu)
+		return (NULL);
 	while (str[l])
 	{
 		resu[m] = str[l];
@@ -121,13 +123,15 @@ int	path_for_excve(char **tab_of_arg, t_pipex *doc, char **env)
 	char	*command;
 
 	i = 0;
-	if (tab_of_arg[0][0] == '/')
+	if (ft_strchr(tab_of_arg[0], '/'))
 	{
 		(*doc).path_for_excve = tab_of_arg[0];
-		return (0);
+		return (1);
 	}
 	size = ft_strlen(tab_of_arg[0]);
 	command = malloc(sizeof(char) * (size + 1));
+	if (!command)
+		return (0);
 	while (i < size)
 	{
 		command[i] = tab_of_arg[0][i];
@@ -136,7 +140,7 @@ int	path_for_excve(char **tab_of_arg, t_pipex *doc, char **env)
 	command[i] = 0;
 	if (set_path(doc, env, command) == 0)
 	{
-		free(command);
+		(*doc).path_for_excve = command;
 		return (0);
 	}
 	(*doc).path_for_excve = ft_strjoin((*doc).env, command);

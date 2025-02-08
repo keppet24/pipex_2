@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve_arg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:01:57 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/06 01:05:16 by taqi             ###   ########.fr       */
+/*   Updated: 2025/02/08 15:30:33 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	tab_of_arg(char **tab, t_pipex *doc)
 	j = 0;
 	size_of_arg = size_of_new_tab(tab);
 	(*doc).arg_for_excve = malloc(sizeof(char *) * (size_of_arg + 1));
+	if (!(*doc).arg_for_excve)
+		return ;
 	while (i < size_of_arg)
 	{
 		if (ft_strcmp(tab[i], "'") == 0 && ft_strcmp(tab[i + 1], "'") == 0)
