@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:55:44 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/08 12:10:20 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/10 16:58:53 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int		ft_strlen(char *s);
 int		ft_strncmp(char *s1, char *s2, size_t n);
 int		ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
-
+int		check_slash(char **tab_of_arg, t_pipex *doc);
 
 #endif

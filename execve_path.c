@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:55:56 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/08 15:31:27 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/10 16:59:33 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,8 @@ int	path_for_excve(char **tab_of_arg, t_pipex *doc, char **env)
 	char	*command;
 
 	i = 0;
-	if (ft_strchr(tab_of_arg[0], '/'))
-	{
-		(*doc).path_for_excve = tab_of_arg[0];
+	if (check_slash(tab_of_arg, doc) == 1)
 		return (1);
-	}
 	size = ft_strlen(tab_of_arg[0]);
 	command = malloc(sizeof(char) * (size + 1));
 	if (!command)
