@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:36:54 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/08 16:53:39 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/10 16:19:43 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,10 @@ void	direction_2(int *fd, t_pipex *doc)
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[0]);
 	if (doc->outfile_fd == -1)
+	{
+		close(doc->infile_fd);
 		exit(EXIT_FAILURE);
+	}
 	dup2(doc->outfile_fd, STDOUT_FILENO);
 	close(doc->outfile_fd);
 }
@@ -143,10 +146,10 @@ static int	finalize_processes(t_pipex *doc, int fd[2], int id, int id2)
 	close(fd[1]);
 	waitpid(id, NULL, 0);
 	waitpid(id2, &wstatus, 0);
-	if (doc->outfile_fd != -1)
-		close(doc->outfile_fd);
-	if (doc->infile_fd != -1)
-		close(doc->infile_fd);
+	//if (doc->outfile_fd != -1)
+	close(doc->outfile_fd);
+	//if (doc->infile_fd != -1)
+	close(doc->infile_fd);
 	return (WEXITSTATUS(wstatus));
 }
 
