@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 12:17:05 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/11 12:57:00 by taqi             ###   ########.fr       */
+/*   Updated: 2025/02/11 18:05:18 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,40 @@ void	execute_program_1(int ac, char **av, t_pipex *doc, char **env)
 
 	(void)ac;
 	envi[0] = NULL;
+	
 	tab = ft_split(av[2], ' ');
+	if (!tab)
+		return ;
 	tab_of_arg(tab, doc);
-	path_for_excve(tab, doc, env);
-	if (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
+	if (path_for_excve(tab, doc, env) == 1)
 	{
-		write(2, "command not found: ", 19);
-		write(2, (*doc).path_for_excve, ft_strlen((*doc).path_for_excve));
-		write(2, "\n", 1);
-		free_all(tab);
-		free((*doc).arg_for_excve);
-		exit(127);
+		if (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
+		{
+			write(2, "command not found: ", 19);
+			write(2, (*doc).path_for_excve, ft_strlen((*doc).path_for_excve));
+			write(2, "\n", 1);
+			free_all(tab);
+			free((*doc).arg_for_excve);
+	 		//free((*doc).path_for_excve);
+			exit(127);
+		}
 	}
+	else
+	{
+		if (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
+		{
+			write(2, "command not found: ", 19);
+			write(2, (*doc).path_for_excve, ft_strlen((*doc).path_for_excve));
+			write(2, "\n", 1);
+			free_all(tab);
+			free((*doc).arg_for_excve);
+			free((*doc).path_for_excve);
+			exit(127);
+		}
+	}  
+	
 }
 
-		//if (path_for_excve(tab, doc, env))
-		//free((*doc).path_for_excve);
 void	execute_program_2(int ac, char **av, t_pipex *doc, char **env)
 {
 	char	**tab;
@@ -56,16 +74,58 @@ void	execute_program_2(int ac, char **av, t_pipex *doc, char **env)
 	(void)ac;
 	envi[0] = NULL;
 	tab = ft_split(av[3], ' ');
+	if (!tab)
+		return ;
 	tab_of_arg(tab, doc);
-	path_for_excve(tab, doc, env);
-	if (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
+	//path_for_excve(tab, doc, env);
+	if (path_for_excve(tab, doc, env) == 1)
 	{
-		write(2, "command not found: ", 19);
-		write(2, (*doc).path_for_excve, ft_strlen((*doc).path_for_excve));
-		write(2, "\n", 1);
-		free_all(tab);
-		free((*doc).arg_for_excve);
-		free((*doc).path_for_excve);
-		exit(127);
+		if (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
+		{
+			write(2, "command not found: ", 19);
+			write(2, (*doc).path_for_excve, ft_strlen((*doc).path_for_excve));
+			write(2, "\n", 1);
+			free_all(tab);
+			free((*doc).arg_for_excve);
+	 		//free((*doc).path_for_excve);
+			exit(127);
+		}
 	}
+	else
+	{
+		if (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
+		{
+			write(2, "command not found: ", 19);
+			write(2, (*doc).path_for_excve, ft_strlen((*doc).path_for_excve));
+			write(2, "\n", 1);
+			free_all(tab);
+			free((*doc).arg_for_excve);
+			free((*doc).path_for_excve);
+			exit(127);
+		}
+	}  
+	
 }
+
+		//if (path_for_excve(tab, doc, env))
+// void	execute_program_2(int ac, char **av, t_pipex *doc, char **env)
+// {
+// 	char	**tab;
+// 	char	*envi[1];
+
+// 	(void)ac;
+// 	envi[0] = NULL;
+// 	tab = ft_split(av[3], ' ');
+// 	tab_of_arg(tab, doc);
+// 	path_for_excve(tab, doc, env);
+// 	if (execve((*doc).path_for_excve, (*doc).arg_for_excve, envi) == -1)
+// 	{
+// 		write(2, "command not found: ", 19);
+// 		write(2, (*doc).path_for_excve, ft_strlen((*doc).path_for_excve));
+// 		write(2, "\n", 1);
+// 		free_all(tab);
+// 		free((*doc).arg_for_excve);
+// 		free((*doc).path_for_excve);
+// 		exit(127);
+// 	}
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:52:39 by taqi              #+#    #+#             */
-/*   Updated: 2025/02/10 16:59:23 by taqi             ###   ########.fr       */
+/*   Updated: 2025/02/11 17:50:03 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
+#include <stdio.h>
+
 int	check_slash(char **tab_of_arg, t_pipex *doc)
 {
 	if (ft_strchr(tab_of_arg[0], '/'))
@@ -59,4 +61,24 @@ int	check_slash(char **tab_of_arg, t_pipex *doc)
 		return (1);
 	}
 	return (0);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		n;
+	int		i;
+	char	*copy;
+
+	i = 0;
+	n = ft_strlen(src);
+	copy = (char *)malloc((n + 1) * sizeof (char));
+	if (!copy)
+		return (0);
+	while (src[i])
+	{
+		copy[i] = src[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }
