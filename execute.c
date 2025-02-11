@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 12:17:05 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/08 15:09:31 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/11 11:31:08 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	execute_program_1(int ac, char **av, t_pipex *doc, char **env)
 		write(2, "\n", 1);
 		free_all(tab);
 		free((*doc).arg_for_excve);
-		free((*doc).path_for_excve);
+		//if (path_for_excve(tab, doc, env))
+		//free((*doc).path_for_excve);
 		exit(127);
 	}
 }
