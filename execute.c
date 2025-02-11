@@ -6,7 +6,7 @@
 /*   By: taqi <taqi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 12:17:05 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/11 11:31:08 by taqi             ###   ########.fr       */
+/*   Updated: 2025/02/11 12:57:00 by taqi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	execute_program_1(int ac, char **av, t_pipex *doc, char **env)
 		write(2, "\n", 1);
 		free_all(tab);
 		free((*doc).arg_for_excve);
-		//if (path_for_excve(tab, doc, env))
-		//free((*doc).path_for_excve);
 		exit(127);
 	}
 }
 
+		//if (path_for_excve(tab, doc, env))
+		//free((*doc).path_for_excve);
 void	execute_program_2(int ac, char **av, t_pipex *doc, char **env)
 {
 	char	**tab;
