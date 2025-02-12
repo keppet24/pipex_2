@@ -6,7 +6,7 @@
 /*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:36:54 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/11 17:29:16 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/12 14:26:25 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	check_files(t_pipex *doc, char *input, char *output)
 
 void	direction_1(int *fd, t_pipex *doc)
 {
-	close(doc->outfile_fd);
+	if (doc->outfile_fd != -1)
+		close(doc->outfile_fd);
 	close(fd[0]);
 	if (doc->infile_fd == -1)
 	{
@@ -39,7 +40,8 @@ void	direction_1(int *fd, t_pipex *doc)
 
 void	direction_2(int *fd, t_pipex *doc)
 {
-	close(doc->infile_fd);
+	if (doc->infile_fd != -1)
+		close(doc->infile_fd);
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[0]);

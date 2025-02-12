@@ -6,7 +6,7 @@
 /*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 12:17:05 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/11 18:05:18 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/12 13:32:09 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ void	execute_program_1(int ac, char **av, t_pipex *doc, char **env)
 
 	(void)ac;
 	envi[0] = NULL;
-	
+	if (av[2][0] == '\0')
+	{
+		errno = EACCES;
+		perror("Erreur");
+		exit(EXIT_FAILURE);
+	}
 	tab = ft_split(av[2], ' ');
 	if (!tab)
 		return ;
@@ -73,6 +78,12 @@ void	execute_program_2(int ac, char **av, t_pipex *doc, char **env)
 
 	(void)ac;
 	envi[0] = NULL;
+	if (av[3][0] == '\0')
+	{
+		errno = EACCES;
+		perror("Erreur");
+		exit(EXIT_FAILURE);
+	}
 	tab = ft_split(av[3], ' ');
 	if (!tab)
 		return ;

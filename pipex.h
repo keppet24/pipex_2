@@ -6,7 +6,7 @@
 /*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:55:44 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/11 16:42:47 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/12 13:30:50 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <errno.h>
 
 typedef struct s_pipex
 {
