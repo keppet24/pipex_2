@@ -6,7 +6,7 @@
 /*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:36:54 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/12 14:26:25 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/16 19:55:26 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ void	direction_2(int *fd, t_pipex *doc)
 	dup2(fd[0], STDIN_FILENO);
 	close(fd[0]);
 	if (doc->outfile_fd == -1)
-	{
-		//close(doc->infile_fd);
 		exit(EXIT_FAILURE);
-	}
 	dup2(doc->outfile_fd, STDOUT_FILENO);
 	close(doc->outfile_fd);
 }

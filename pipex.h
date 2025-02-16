@@ -6,7 +6,7 @@
 /*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:55:44 by othmaneetta       #+#    #+#             */
-/*   Updated: 2025/02/12 13:30:50 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/16 19:55:38 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int		ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
 int		check_slash(char **tab_of_arg, t_pipex *doc);
 char	*ft_strdup(char *src);
-
 
 #endif

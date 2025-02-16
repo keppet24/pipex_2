@@ -6,7 +6,7 @@
 /*   By: oettaqi <oettaqi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:52:39 by taqi              #+#    #+#             */
-/*   Updated: 2025/02/11 17:50:03 by oettaqi          ###   ########.fr       */
+/*   Updated: 2025/02/16 19:56:00 by oettaqi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ char	*ft_strchr(char *s, int c)
 		return ((char *)&s[i]);
 	return (0);
 }
-
-#include <stdio.h>
 
 int	check_slash(char **tab_of_arg, t_pipex *doc)
 {
